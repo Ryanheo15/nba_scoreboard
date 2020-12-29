@@ -3,6 +3,7 @@ let express = require("express");
 let ejs = require("ejs");
 let mongoose = require("mongoose");
 let bodyParser = require("body-parser");
+let fetch = require("node-fetch");
 
 
 //Routes
