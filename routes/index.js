@@ -21,7 +21,9 @@ router.get("/scores", (req, res) => {
       data.api.games.forEach(game=>{
         games.push({
           Home: game.hTeam.fullName,
+          HomeLogo: game.hTeam.logo,
           Away: game.vTeam.fullName,
+          AwayLogo: game.vTeam.logo,
           HomeScore: game.hTeam.score.points,
           AwayScore: game.vTeam.score.points
         })
