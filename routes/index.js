@@ -3,7 +3,7 @@ let router = express.Router();
 let nodeFetch = require("node-fetch");
 
 router.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.redirect("/scores")
 });
 
 
