@@ -28,6 +28,9 @@ router.get("/scores", (req, res) => {
           AwayScore: game.vTeam.score.points
         })
       })
+      res.render("index", {
+        games: games
+      }
       console.log(games)
     })
 
