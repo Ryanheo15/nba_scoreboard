@@ -6,12 +6,11 @@ router.get("/", (req, res) => {
   res.redirect("/scores")
 });
 
-
 router.get("/scores", (req, res) => {
   nodeFetch("https://api-nba-v1.p.rapidapi.com/games/live/", {
       "method": "GET",
       "headers": {
-        "x-rapidapi-key": "04be869764msh1173a225149d4f4p1b5c0fjsn2f218b338a38",
+        "x-rapidapi-key": process.env.API_KEY,
         "x-rapidapi-host": "api-nba-v1.p.rapidapi.com"
       }
     })
@@ -42,7 +41,7 @@ router.get("/scores", (req, res) => {
         nodeFetch(`https://api-nba-v1.p.rapidapi.com/games/date/${today}`, {
             "method": "GET",
             "headers": {
-              "x-rapidapi-key": "04be869764msh1173a225149d4f4p1b5c0fjsn2f218b338a38",
+              "x-rapidapi-key": process.env.API_KEY,
               "x-rapidapi-host": "api-nba-v1.p.rapidapi.com"
             }
           })

@@ -4,7 +4,7 @@ let ejs = require("ejs");
 let mongoose = require("mongoose");
 let bodyParser = require("body-parser");
 let fetch = require("node-fetch");
-
+require('dotenv').config()
 
 //Routes
 let indexRoute = require("./routes/index.js");
