@@ -30,7 +30,8 @@ router.get("/scores", (req, res) => {
           AwayLogo: game.vTeam.logo,
           HomeScore: game.hTeam.score.points,
           AwayScore: game.vTeam.score.points,
-          status: "Live"
+          status: "Live",
+          arena: game.city + ", " + game.arena
         })
         teams.push({
           Home: Home,
@@ -75,7 +76,8 @@ router.get("/scores", (req, res) => {
                 AwayLogo: game.vTeam.logo,
                 HomeScore: game.hTeam.score.points,
                 AwayScore: game.vTeam.score.points,
-                status: status
+                status: status,
+                arena: game.city + ", " + game.arena
               })
               teams.push(currTeam)
             }
