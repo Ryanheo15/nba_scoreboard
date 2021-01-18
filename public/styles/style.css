@@ -17,11 +17,14 @@ table{
 }
 
 .margin{
-  margin-top: 100px;
+  margin-top: 20px;
+}
+.margin2{
+  margin-top: 30px;
 }
 
 .row{
-    justify-content:center; 
+    justify-content:center;
     margin-left: 20%;
     margin-right: 20%;
 }
@@ -35,12 +38,6 @@ table{
 .table{
     border-bottom:1px solid black;
 }
-
-/* .tables{
-    margin-left: 150px;
-    margin-right: 150px;
-    border: 1px solid black;
-} */
 
 .col-lg-8{
     text-align: center;

@@ -1,5 +1,27 @@
 
 <%- include('header'); -%>
+
+<div class="tables">
+
+  <div class="row">
+    <div class="col-lg-1">
+      <h1> <a href=<%=games[0].yday%>> < </a> </h1>
+      <img src="" alt="">
+    </div>
+    <div class="col-lg-8">
+      <h1 style = "text-align: center"><%=games[0].date%></h1>
+    </div>
+    <div class="col-lg-1">
+      <h1> <a href=<%=games[0].tomo%>> > </a> </h1>
+    </div>
+    <div class="row">
+      <h6><a href="/scores">Go to Today</a></h6>
+    </div>
+
+  </div>
+
+<div class="margin2">
+</div>
     <% games.forEach(game=>{%>
     <!-- Create whatever game blocks using data from games -->
     <div class="table">
