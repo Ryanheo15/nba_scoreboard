@@ -21,6 +21,7 @@ table{
 }
 .margin2{
   margin-top: 30px;
+  border-bottom:1px solid black;
 }
 
 .row{
