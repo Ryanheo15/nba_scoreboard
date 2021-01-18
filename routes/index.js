@@ -1,7 +1,6 @@
 let express = require("express");
 let router = express.Router();
 let nodeFetch = require("node-fetch");
-let nba = require('nba.js')
 let moment = require('moment-timezone')
 
 const logos = new Map([
@@ -60,8 +59,7 @@ router.get("/scores", (req, res) => {
           status = "Live"
         }
         games.push({
-          gameId: game.gameId,
-          date: today,
+          dateGameId: today + '/' + game.gameId,
           Home: game.hTeam.triCode,
           HomeLogo:logos.get(game.hTeam.triCode),
           Away: game.vTeam.triCode,
@@ -118,6 +116,7 @@ router.get("/:date/:id", (req, res) => {
         home.push({
           first_name: player.first_name,
           last_name: player.last_name,
+          name: first_name + ' ' + last_name,
           jersey_number: player.jersey_number,
           position: player.position_short,
           minutes: player.minutes,
@@ -155,6 +154,7 @@ router.get("/:date/:id", (req, res) => {
         })
       })
     });
+    console.log(home)
     res.render("boxscore", {
       away: away,
       home: home

@@ -1,0 +1,38 @@
+<%- include('header'); -%>
+    <body>
+        
+        <% home.forEach(player=>{%> 
+        <div class="row">
+            <div class="col-lg-2">
+                <p><%=player.name%></p>
+            </div>
+            <div class="col-lg-1">
+                <p><%=player.position%></p>
+            </div>
+            <div class="col-lg-1">
+                <p><%=player.minutes%></p>
+            </div>
+            <div class="col-lg-1">
+                <p><%=player.points%></p>
+            </div>
+            <div class="col-lg-1">
+                <p><%=player.assists%></p>
+            </div>
+            <div class="col-lg-1">
+                <p><%=player.reb%></p>
+            </div>
+            <div class="col-lg-1">
+                <p><%=player.fouls%></p>
+            </div>
+            <div class="col-lg-1">
+                <p><%=player.steals%></p>
+            </div>
+            <div class="col-lg-1">
+                <p><%=player.blocks%></p>
+            </div>
+            <div class="col-lg-1">
+                <p><%=player.turnovers%></p>
+            </div>
+        <%})%>
+    </body>
+<%- include('footer'); -%>

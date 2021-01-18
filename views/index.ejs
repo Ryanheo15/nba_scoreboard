@@ -1,47 +1,6 @@
-<!doctype html>
-<html lang="en">
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="./styles/style.css">
-
-  <title>NBA Scoreboard</title>
-
-</head>
-
-<body>
-  <!-- Website Header-->
-  <header id="main-header">
-    <div class="container">
-      <h1>NBA Scoreboard</h1>
-    </div>
-  </header>
-
-  <!-- Website NavBar -->
-  <nav id="navbar">
-    <div class="container">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Filler</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <main>
-
-    <% games.forEach(game=>{%>
+<%- include('header'); -%>
+    <% games.forEach(game=>{%> 
     <!-- Create whatever game blocks using data from games -->
     <div class="table">
 
@@ -77,7 +36,7 @@
           <p><%=game.Home%> </p>
         </div>
         <div class="col-lg-8">
-          <h1> </h1>
+          <a href= <%=game.dateGameId%>>Boxscore</a>
         </div>
         <div class="col-lg-1">
           <p><%=game.Away%></p>
@@ -89,16 +48,4 @@
     <%})%>
 
 
-
-
-
-  </main>
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-
-</html>
+<%- include('footer'); -%>
