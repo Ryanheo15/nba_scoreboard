@@ -2,17 +2,50 @@
 <div class="margin">
 </div>
 
+<div class="table">
+
+  <div class="row">
+    <div class="col-lg-1">
+      <h2><%=gameInfo.home.name%></h2>
+      <img src="" alt="">
+    </div>
+    <div class="col-lg-8">
+      <h1><%=gameInfo.quarter%></h1>
+    </div>
+    <div class="col-lg-1">
+      <h2><%=gameInfo.away.name%></h2>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-1">
+      <h1> <%=gameInfo.home.score%> </h1>
+    </div>
+    <div class="col-lg-8" style = " text-align: center;">
+      <h2> <%=gameInfo.qStatus%></h2>
+    </div>
+    <div class="col-lg-1">
+      <h1><%=gameInfo.away.score%></h1>
+    </div>
+
+  </div>
+
+</div>
+
+
+
 <div id="accordion">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Home
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          <%=gameInfo.home.name%>
         </button>
       </h5>
     </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
       <div class="card-body">
         <table>
           <tr>
@@ -22,12 +55,19 @@
             <th>Pts</th>
             <th>Ast</th>
             <th>Reb</th>
+            <th>FG</th>
+            <th>FGA</th>
+            <th>3pt FG</th>
+            <th>3pt FGA</th>
+            <th>FT</th>
+            <th>FTA</th>
             <th>Fouls</th>
             <th>Stls</th>
             <th>Blk</th>
             <th>TOs</th>
+            <th>+/-</th>
           </tr>
-        
+
         <% home.forEach(player=>{%>
           <tr>
               <td><%=player.name%></td>
@@ -36,10 +76,17 @@
               <td><%=player.points%></td>
               <td><%=player.assists%></td>
               <td><%=player.reb%></td>
+              <td><%=player.fg%></td>
+              <td><%=player.fga%></td>
+              <td><%=player.three%></td>
+              <td><%=player.athree%></td>
+              <td><%=player.ft%></td>
+              <td><%=player.fta%></td>
               <td><%=player.fouls%></td>
               <td><%=player.steals%></td>
               <td><%=player.blocks%></td>
               <td><%=player.turnovers%></td>
+              <td><%=player.plusminus%></td>
           </tr>
         <%})%>
         </table>
@@ -50,7 +97,7 @@
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Away
+          <%=gameInfo.away.name%>
         </button>
       </h5>
     </div>
@@ -64,24 +111,38 @@
             <th>Pts</th>
             <th>Ast</th>
             <th>Reb</th>
+            <th>FG</th>
+            <th>FGA</th>
+            <th>3pt FG</th>
+            <th>3pt FGA</th>
+            <th>FT</th>
+            <th>FTA</th>
             <th>Fouls</th>
             <th>Stls</th>
             <th>Blk</th>
             <th>TOs</th>
+            <th>+/-</th>
           </tr>
-        
+
         <% away.forEach(player=>{%>
           <tr>
-              <td><%=player.name%></td>
-              <td><%=player.position%></td>
-              <td><%=player.minutes%></td>
-              <td><%=player.points%></td>
-              <td><%=player.assists%></td>
-              <td><%=player.reb%></td>
-              <td><%=player.fouls%></td>
-              <td><%=player.steals%></td>
-              <td><%=player.blocks%></td>
-              <td><%=player.turnovers%></td>
+            <td><%=player.name%></td>
+            <td><%=player.position%></td>
+            <td><%=player.minutes%></td>
+            <td><%=player.points%></td>
+            <td><%=player.assists%></td>
+            <td><%=player.reb%></td>
+            <td><%=player.fg%></td>
+            <td><%=player.fga%></td>
+            <td><%=player.three%></td>
+            <td><%=player.athree%></td>
+            <td><%=player.ft%></td>
+            <td><%=player.fta%></td>
+            <td><%=player.fouls%></td>
+            <td><%=player.steals%></td>
+            <td><%=player.blocks%></td>
+            <td><%=player.turnovers%></td>
+            <td><%=player.plusminus%></td>
           </tr>
         <%})%>
         </table>
@@ -98,7 +159,81 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        <table>
+          <tr>
+            <th>Team</th>
+            <th>1st</th>
+            <th>2nd</th>
+            <th>3rd</th>
+            <th>4th</th>
+          </tr>
+          <tr>
+            <td><%=gameInfo.home.name%></td>
+            <td><%=gameInfo.home.first%></td>
+            <td><%=gameInfo.home.second%></td>
+            <td><%=gameInfo.home.third%></td>
+            <td><%=gameInfo.home.fourth%></td>
+          </tr>
+          <tr>
+            <td><%=gameInfo.away.name%></td>
+            <td><%=gameInfo.away.first%></td>
+            <td><%=gameInfo.away.second%></td>
+            <td><%=gameInfo.away.third%></td>
+            <td><%=gameInfo.away.fourth%></td>
+          </tr>
+        </table>
+
+        <div class="margin">
+        </div>
+
+        <table>
+          <tr>
+            <th>Stat</th>
+            <th><%=gameInfo.home.name%></th>
+            <th><%=gameInfo.away.name%></th>
+          </tr>
+          <tr>
+            <td>Defensive Rebounds</td>
+            <td><%=gameInfo.home.Dreb%></td>
+            <td><%=gameInfo.away.Dreb%></td>
+          </tr>
+          <tr>
+            <td>Offensive Rebounds</td>
+            <td><%=gameInfo.home.Oreb%></td>
+            <td><%=gameInfo.away.Oreb%></td>
+          </tr>
+          <tr>
+            <td>Assists</td>
+            <td><%=gameInfo.home.ast%></td>
+            <td><%=gameInfo.away.ast%></td>
+          </tr>
+          <tr>
+            <td>Steals</td>
+            <td><%=gameInfo.home.stls%></td>
+            <td><%=gameInfo.away.stls%></td>
+          </tr>
+          <tr>
+            <td>Blocks</td>
+            <td><%=gameInfo.home.blks%></td>
+            <td><%=gameInfo.away.blks%></td>
+          </tr>
+          <tr>
+            <td>FG%</td>
+            <td><%=gameInfo.home.fgp%></td>
+            <td><%=gameInfo.away.fgp%></td>
+          </tr>
+          <tr>
+            <td>3pt %</td>
+            <td><%=gameInfo.home.three%></td>
+            <td><%=gameInfo.away.three%></td>
+          </tr>
+          <tr>
+            <td>Turnovers</td>
+            <td><%=gameInfo.home.TOs%></td>
+            <td><%=gameInfo.away.TOs%></td>
+          </tr>
+        </table>
+
       </div>
     </div>
   </div>

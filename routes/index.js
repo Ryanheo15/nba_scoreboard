@@ -4,42 +4,49 @@ let nodeFetch = require("node-fetch");
 let moment = require('moment-timezone')
 
 const logos = new Map([
-  ["ATL","http://assets.stickpng.com/thumbs/58419be4a6515b1e0ad75a58.png"],
-  ["BOS","http://assets.stickpng.com/thumbs/58419c6aa6515b1e0ad75a61.png"],
-  ["BKN","http://assets.stickpng.com/thumbs/58419c7ba6515b1e0ad75a62.png"],
-  ["CHA","http://assets.stickpng.com/thumbs/58419bd7a6515b1e0ad75a57.png"],
-  ["CHI","http://assets.stickpng.com/thumbs/58419cf6a6515b1e0ad75a6b.png"],
-  ["CLE","http://assets.stickpng.com/thumbs/58419c8da6515b1e0ad75a63.png"],
-  ["DAL","http://assets.stickpng.com/thumbs/58419cd6a6515b1e0ad75a68.png"],
-  ["DEN","http://assets.stickpng.com/thumbs/58419b70a6515b1e0ad75a50.png"],
-  ["DET","http://assets.stickpng.com/thumbs/58419c4ca6515b1e0ad75a5f.png"],
-  ["GSW","http://assets.stickpng.com/thumbs/58419ce2a6515b1e0ad75a69.png"],
-  ["IND","http://assets.stickpng.com/thumbs/58419b8da6515b1e0ad75a52.png"],
-  ["HOU","https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Houston_Rockets.svg/1200px-Houston_Rockets.svg.png"],
-  ["LAC","http://assets.stickpng.com/thumbs/58419c59a6515b1e0ad75a60.png"],
-  ["LAL","http://assets.stickpng.com/thumbs/58419d0aa6515b1e0ad75a6c.png"],
-  ["MEM","http://assets.stickpng.com/thumbs/58419c00a6515b1e0ad75a5a.png"],
-  ["MIA","https://toppng.com/uploads/preview/ba-logo-png-2014-download-logo-miami-heat-11563538465nkpfwmfmb2.png"],
-  ["MIL","http://assets.stickpng.com/thumbs/58419ba7a6515b1e0ad75a54.png"],
-  ["MIN","http://assets.stickpng.com/thumbs/58419bc5a6515b1e0ad75a56.png"],
-  ["NOP","http://assets.stickpng.com/thumbs/58419b9ba6515b1e0ad75a53.png"],
-  ["NYK","http://assets.stickpng.com/thumbs/58419cc8a6515b1e0ad75a67.png"],
-  ["OKC","http://assets.stickpng.com/thumbs/58419c20a6515b1e0ad75a5c.png"],
-  ["ORL","http://assets.stickpng.com/thumbs/58419b7da6515b1e0ad75a51.png"],
-  ["PHI","http://assets.stickpng.com/thumbs/58419ca3a6515b1e0ad75a64.png"],
-  ["PHX","http://assets.stickpng.com/thumbs/58419d52a6515b1e0ad75a6d.png"],
-  ["POR","https://www.clipartmax.com/png/middle/255-2555105_blazers-thumb-portland-trail-blazers-logo-png.png"],
-  ["SAS","http://assets.stickpng.com/thumbs/58419cbca6515b1e0ad75a66.png"],
-  ["TOR","http://assets.stickpng.com/thumbs/58419bf3a6515b1e0ad75a59.png"],
-  ["UTA","http://assets.stickpng.com/thumbs/58419bb6a6515b1e0ad75a55.png"],
-  ["WAS","http://assets.stickpng.com/thumbs/58419c12a6515b1e0ad75a5b.png"],
-  ["SAC","https://logos-download.com/wp-content/uploads/2016/04/Sacramento_Kings_logo_transparent_bg.png"]
+  ["ATL", "/logos/ATL.png"],
+  ["BOS", "/logos/BOS.png"],
+  ["BKN", "logos/BKN.png"],
+  ["CHA", "/logos/CHA.png"],
+  ["CHI", "/logos/CHI.png"],
+  ["CLE", "/logos/CLE.png"],
+  ["DAL", "/logos/DAL.png"],
+  ["DEN", "/logos/DEN.png"],
+  ["DET", "/logos/DET.png"],
+  ["GSW", "/logos/GSW.png"],
+  ["IND", "/logos/IND.png"],
+  ["HOU", "/logos/HOU.png"],
+  ["LAC", "/logos/LAC.png"],
+  ["LAL", "/logos/LAL.png"],
+  ["MEM", "/logos/MEM.png"],
+  ["MIA", "/logos/MIA.png"],
+  ["MIL", "/logos/MIL.png"],
+  ["MIN", "/logos/MIN.png"],
+  ["NOP", "/logos/NOP.png"],
+  ["NYK", "/logos/NYK.png"],
+  ["OKC", "/logos/OKC.png"],
+  ["ORL", "/logos/ORL.png"],
+  ["PHI", "/logos/PHI.png"],
+  ["PHX", "/logos/PHX.png"],
+  ["POR", "/logos/POR.png"],
+  ["SAS", "/logos/SAS.png"],
+  ["TOR", "/logos/TOR.png"],
+  ["UTA", "/logos/UTA.png"],
+  ["WAS", "/logos/WAS.png"],
+  ["SAC", "/logos/SAC.png"]
 ])
 
 router.get("/", (req, res) => {
   res.redirect("/scores")
 });
 
+router.get("/about", (req, res) => {
+  res.render("about")
+})
+
+router.get("/contact", (req, res) => {
+  res.render("contact")
+})
 
 //live scores, scores for today
 router.get("/scores", (req, res) => {
@@ -51,17 +58,17 @@ router.get("/scores", (req, res) => {
     .then(data => {
       data.games.forEach(game => {
         let status = ""
-        if(game.statusNum == 3){
+        if (game.statusNum == 3) {
           status = "Final"
-        }else if (game.statusNum == 1){
+        } else if (game.statusNum == 1) {
           status = "Scheduled"
-        }else if (game.statusNum == 2){
+        } else if (game.statusNum == 2) {
           status = "Live"
         }
         games.push({
           dateGameId: today + '/' + game.gameId,
           Home: game.hTeam.triCode,
-          HomeLogo:logos.get(game.hTeam.triCode),
+          HomeLogo: logos.get(game.hTeam.triCode),
           Away: game.vTeam.triCode,
           AwayLogo: logos.get(game.vTeam.triCode),
           HomeScore: game.hTeam.score,
@@ -76,10 +83,6 @@ router.get("/scores", (req, res) => {
 
     });
 });
-
-router.post("/", (req,res)=>{
-  res.redirect("/scores")
-})
 
 //for calendar feature, past games
 // router.get("/:date", (req, res) => {
@@ -113,8 +116,52 @@ router.get("/:date/:id", (req, res) => {
   const gameId = req.params.id
   home = []
   away = []
+
   nodeFetch(`http://data.nba.net/json/cms/noseason/game/${date}/${gameId}/boxscore.json`).then(res => res.json())
     .then(data => {
+      if(data.sports_content.game.period_time.period_value == ""){
+        res.render("invalid")
+      }
+      gameInfo = {
+        quarter: "Quarter " + data.sports_content.game.period_time.period_value,
+        qStatus: data.sports_content.game.period_time.period_status,
+        date: date,
+        gameId: gameId,
+        home:{
+          name: data.sports_content.game.home.abbreviation,
+          score: data.sports_content.game.home.score,
+          first: data.sports_content.game.home.linescores.period[0].score,
+          second: data.sports_content.game.home.linescores.period[1].score,
+          third: data.sports_content.game.home.linescores.period[2].score,
+          fourth: data.sports_content.game.home.linescores.period[3].score,
+          Dreb:data.sports_content.game.home.stats.rebounds_defensive,
+          Oreb: data.sports_content.game.home.stats.rebounds_offensive,
+          stls: data.sports_content.game.home.stats.steals,
+          blks:data.sports_content.game.home.stats.blocks,
+          TOs:data.sports_content.game.home.stats.turnovers,
+          ast:data.sports_content.game.home.stats.assists,
+          fgp: data.sports_content.game.home.stats.field_goals_percentage+'%',
+          three: data.sports_content.game.home.stats.three_pointers_percentage+'%'
+        },
+        away :{
+          name: data.sports_content.game.visitor.abbreviation,
+          score: data.sports_content.game.visitor.score,
+          first: data.sports_content.game.visitor.linescores.period[0].score,
+          second: data.sports_content.game.visitor.linescores.period[1].score,
+          third: data.sports_content.game.visitor.linescores.period[2].score,
+          fourth: data.sports_content.game.visitor.linescores.period[3].score,
+          Dreb:data.sports_content.game.visitor.stats.rebounds_defensive,
+          Oreb: data.sports_content.game.visitor.stats.rebounds_offensive,
+          stls: data.sports_content.game.visitor.stats.steals,
+          blks:data.sports_content.game.visitor.stats.blocks,
+          TOs:data.sports_content.game.visitor.stats.turnovers,
+          ast:data.sports_content.game.visitor.stats.assists,
+          fgp: data.sports_content.game.visitor.stats.field_goals_percentage+'%',
+          three: data.sports_content.game.visitor.stats.three_pointers_percentage+'%'
+        }
+
+
+      }
       data.sports_content.game.home.players.player.forEach(player => {
         home.push({
           first_name: player.first_name,
@@ -128,12 +175,19 @@ router.get("/:date/:id", (req, res) => {
           assists: player.assists,
           Oreb: player.rebounds_offensive,
           Dreb: player.rebounds_defensive,
-          reb: parseInt(player.rebounds_offensive)+parseInt(player.rebounds_defensive),
+          reb: parseInt(player.rebounds_offensive) + parseInt(player.rebounds_defensive),
           assists: player.assists,
           fouls: player.fouls,
           steals: player.steals,
           turnovers: player.turnovers,
-          blocks: player.blocks
+          blocks: player.blocks,
+          fg: player.field_goals_made,
+          fga: player.field_goals_attempted,
+          ft: player.free_throws_made,
+          fta: player.free_throws_attempted,
+          three: player.three_pointers_made,
+          athree: player.three_pointers_attempted,
+          plusminus: player.plus_minus
         })
       })
       data.sports_content.game.visitor.players.player.forEach(player => {
@@ -149,17 +203,25 @@ router.get("/:date/:id", (req, res) => {
           assists: player.assists,
           Oreb: player.rebounds_offensive,
           Dreb: player.rebounds_defensive,
-          reb: parseInt(player.rebounds_offensive)+parseInt(player.rebounds_defensive),
+          reb: parseInt(player.rebounds_offensive) + parseInt(player.rebounds_defensive),
           assists: player.assists,
           fouls: player.fouls,
           steals: player.steals,
           turnovers: player.turnovers,
-          blocks: player.blocks
+          blocks: player.blocks,
+          fg: player.field_goals_made,
+          fga: player.field_goals_attempted,
+          ft: player.free_throws_made,
+          fta: player.free_throws_attempted,
+          three: player.three_pointers_made,
+          athree: player.three_pointers_attempted,
+          plusminus: player.plus_minus
         })
       })
       res.render("boxscore", {
         away: away,
-        home: home
+        home: home,
+        gameInfo: gameInfo
       })
     });
 
