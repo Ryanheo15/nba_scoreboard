@@ -52,6 +52,7 @@ router.get("/contact", (req, res) => {
 router.get("/scores", (req, res) => {
   //add live games
   var today = moment().tz('America/Los_Angeles');
+  today = today.format("YYYYMMDD")
   res.redirect(`/calendar/${today}`)
   // games = []
   // var yesterday = today.subtract(1, 'days')
