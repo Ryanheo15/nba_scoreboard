@@ -52,43 +52,44 @@ router.get("/contact", (req, res) => {
 router.get("/scores", (req, res) => {
   //add live games
   var today = moment().tz('America/Los_Angeles');
-  games = []
-  var yesterday = today.subtract(1, 'days')
-  var tomorrow = today.add(1, 'days')
-  yesterday = yesterday.format("YYYYMMDD")
-  tomorrow= tomorrow.format("YYYYMMDD")
-  today = today.format("YYYYMMDD")
-  nodeFetch(`http://data.nba.net/10s/prod/v1/${today}/scoreboard.json`).then(res => res.json())
-    .then(data => {
-      data.games.forEach(game => {
-        let status = ""
-        if (game.statusNum == 3) {
-          status = "Final"
-        } else if (game.statusNum == 1) {
-          status = "Scheduled"
-        } else if (game.statusNum == 2) {
-          status = "Live"
-        }
-        games.push({
-          date: today,
-          dateGameId: today + '/' + game.gameId,
-          yday: "/calendar/"+yesterday,
-          tomo: "/calendar/"+tomorrow,
-          Home: game.hTeam.triCode,
-          HomeLogo: logos.get(game.hTeam.triCode),
-          Away: game.vTeam.triCode,
-          AwayLogo: logos.get(game.vTeam.triCode),
-          HomeScore: game.hTeam.score,
-          AwayScore: game.vTeam.score,
-          status: status,
-          arena: game.arena.city + ", " + game.arena.name
-        })
-      })
-      res.render("index", {
-        games: games
-      })
-
-    });
+  res.redirect(`/calendar/${today}`)
+  // games = []
+  // var yesterday = today.subtract(1, 'days')
+  // var tomorrow = today.add(1, 'days')
+  // yesterday = yesterday.format("YYYYMMDD")
+  // tomorrow= tomorrow.format("YYYYMMDD")
+  // today = today.format("YYYYMMDD")
+  // nodeFetch(`http://data.nba.net/10s/prod/v1/${today}/scoreboard.json`).then(res => res.json())
+  //   .then(data => {
+  //     data.games.forEach(game => {
+  //       let status = ""
+  //       if (game.statusNum == 3) {
+  //         status = "Final"
+  //       } else if (game.statusNum == 1) {
+  //         status = "Scheduled"
+  //       } else if (game.statusNum == 2) {
+  //         status = "Live"
+  //       }
+  //       games.push({
+  //         date: today,
+  //         dateGameId: today + '/' + game.gameId,
+  //         yday: "/calendar/"+yesterday,
+  //         tomo: "/calendar/"+tomorrow,
+  //         Home: game.hTeam.triCode,
+  //         HomeLogo: logos.get(game.hTeam.triCode),
+  //         Away: game.vTeam.triCode,
+  //         AwayLogo: logos.get(game.vTeam.triCode),
+  //         HomeScore: game.hTeam.score,
+  //         AwayScore: game.vTeam.score,
+  //         status: status,
+  //         arena: game.arena.city + ", " + game.arena.name
+  //       })
+  //     })
+  //     res.render("index", {
+  //       games: games
+  //     })
+  //
+  //   });
 });
 
 //for calendar feature, past games
