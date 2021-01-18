@@ -7,11 +7,18 @@ body{
     margin:0;
 }
 
+.margin{
+  margin-top: 100px;
+}
+
 .row{
     margin-left: 20%;
     margin-right: 20%;
 }
-
+.rows{
+  margin-left: 10%;
+  margin-right: 10%;
+}
 .container{
     width: 80%;
     margin:auto;
@@ -20,6 +27,12 @@ body{
 
 .table{
     border-bottom:1px solid black;
+}
+
+.tables{
+  margin-left: 150px;
+  margin-right: 150px;
+  border: 1px solid black;
 }
 
 .col-lg-8{

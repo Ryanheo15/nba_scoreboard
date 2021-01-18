@@ -1,38 +1,78 @@
 <%- include('header'); -%>
-    <body>
-        
-        <% home.forEach(player=>{%> 
-        <div class="row">
-            <div class="col-lg-2">
-                <p><%=player.name%></p>
-            </div>
-            <div class="col-lg-1">
-                <p><%=player.position%></p>
-            </div>
-            <div class="col-lg-1">
-                <p><%=player.minutes%></p>
-            </div>
-            <div class="col-lg-1">
-                <p><%=player.points%></p>
-            </div>
-            <div class="col-lg-1">
-                <p><%=player.assists%></p>
-            </div>
-            <div class="col-lg-1">
-                <p><%=player.reb%></p>
-            </div>
-            <div class="col-lg-1">
-                <p><%=player.fouls%></p>
-            </div>
-            <div class="col-lg-1">
-                <p><%=player.steals%></p>
-            </div>
-            <div class="col-lg-1">
-                <p><%=player.blocks%></p>
-            </div>
-            <div class="col-lg-1">
-                <p><%=player.turnovers%></p>
-            </div>
-        <%})%>
-    </body>
+<div class="margin">
+</div>
+
+
+<div class="tables">
+  <div class="row">
+    <div class="col-lg-2">
+      <p>Name</p>
+    </div>
+    <div class="col-lg-1">
+      <p>Pos</p>
+    </div>
+    <div class="col-lg-1">
+      <p>Mins</p>
+    </div>
+    <div class="col-lg-1">
+      <p>Pts</p>
+    </div>
+    <div class="col-lg-1">
+      <p>Ast</p>
+    </div>
+    <div class="col-lg-1">
+      <p>Reb</p>
+    </div>
+    <div class="col-lg-1">
+      <p>F</p>
+    </div>
+    <div class="col-lg-1">
+      <p>Stls</p>
+    </div>
+    <div class="col-lg-1">
+      <p>Blk</p>
+    </div>
+    <div class="col-lg-1">
+      <p>TOs</p>
+    </div>
+  </div>
+</div>
+
+<% home.forEach(player=>{%>
+<div class="tables">
+  <div class="row">
+    <div class="col-lg-2">
+      <p><%=player.name%></p>
+    </div>
+    <div class="col-lg-1">
+      <p><%=player.position%></p>
+    </div>
+    <div class="col-lg-1">
+      <p><%=player.minutes%></p>
+    </div>
+    <div class="col-lg-1">
+      <p><%=player.points%></p>
+    </div>
+    <div class="col-lg-1">
+      <p><%=player.assists%></p>
+    </div>
+    <div class="col-lg-1">
+      <p><%=player.reb%></p>
+    </div>
+    <div class="col-lg-1">
+      <p><%=player.fouls%></p>
+    </div>
+    <div class="col-lg-1">
+      <p><%=player.steals%></p>
+    </div>
+    <div class="col-lg-1">
+      <p><%=player.blocks%></p>
+    </div>
+    <div class="col-lg-1">
+      <p><%=player.turnovers%></p>
+    </div>
+  </div>
+</div>
+<%})%>
+
 <%- include('footer'); -%>

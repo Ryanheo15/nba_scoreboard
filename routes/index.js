@@ -77,46 +77,49 @@ router.get("/scores", (req, res) => {
     });
 });
 
+router.post("/", (req,res)=>{
+  res.redirect("/scores")
+})
+
 //for calendar feature, past games
-router.get("/:date", (req, res) => {
-  var date = req.params.date
-  games = []
-  nodeFetch(`http://data.nba.net/10s/prod/v1/${date}/scoreboard.json`).then(res => res.json())
-    .then(data => {
-      data.games.forEach(game => {
-        games.push({
-          gameId: game.gameId,
-          date: date,
-          Home: game.hTeam.triCode,
-          HomeLogo:logos.get(game.hTeam.triCode),
-          Away: game.vTeam.triCode,
-          AwayLogo: logos.get(game.vTeam.triCode),
-          HomeScore: game.hTeam.score,
-          AwayScore: game.vTeam.score,
-          status: "Final",
-          arena: game.arena.city + ", " + game.arena.name
-        })
-      })
-      res.render("index", {
-        games: games
-      })
-    });
-});
+// router.get("/:date", (req, res) => {
+//   var date = req.params.date
+//   games = []
+//   nodeFetch(`http://data.nba.net/10s/prod/v1/${date}/scoreboard.json`).then(res => res.json())
+//     .then(data => {
+//       data.games.forEach(game => {
+//         games.push({
+//           dateGameId: date + '/' + game.gameId,
+//           Home: game.hTeam.triCode,
+//           HomeLogo:logos.get(game.hTeam.triCode),
+//           Away: game.vTeam.triCode,
+//           AwayLogo: logos.get(game.vTeam.triCode),
+//           HomeScore: game.hTeam.score,
+//           AwayScore: game.vTeam.score,
+//           status: "Final",
+//           arena: game.arena.city + ", " + game.arena.name
+//         })
+//       })
+//       res.render("index", {
+//         games: games
+//       })
+//     });
+// });
 
 
 //box score for games on certain date and id
 router.get("/:date/:id", (req, res) => {
   const date = req.params.date
   const gameId = req.params.id
-  let home = []
-  let away = []
+  home = []
+  away = []
   nodeFetch(`http://data.nba.net/json/cms/noseason/game/${date}/${gameId}/boxscore.json`).then(res => res.json())
     .then(data => {
       data.sports_content.game.home.players.player.forEach(player => {
         home.push({
           first_name: player.first_name,
           last_name: player.last_name,
-          name: first_name + ' ' + last_name,
+          name: player.first_name + ' ' + player.last_name,
           jersey_number: player.jersey_number,
           position: player.position_short,
           minutes: player.minutes,
@@ -125,18 +128,19 @@ router.get("/:date/:id", (req, res) => {
           assists: player.assists,
           Oreb: player.rebounds_offensive,
           Dreb: player.rebounds_defensive,
-          reb: player.rebounds_offensive+player.rebounds_defensive,
+          reb: parseInt(player.rebounds_offensive)+parseInt(player.rebounds_defensive),
           assists: player.assists,
           fouls: player.fouls,
           steals: player.steals,
           turnovers: player.turnovers,
-          blocks: player.blocks,
+          blocks: player.blocks
         })
       })
       data.sports_content.game.visitor.players.player.forEach(player => {
         away.push({
           first_name: player.first_name,
           last_name: player.last_name,
+          name: player.first_name + ' ' + player.last_name,
           jersey_number: player.jersey_number,
           position: player.position_short,
           minutes: player.minutes,
@@ -145,20 +149,20 @@ router.get("/:date/:id", (req, res) => {
           assists: player.assists,
           Oreb: player.rebounds_offensive,
           Dreb: player.rebounds_defensive,
-          reb: player.rebounds_offensive+player.rebounds_defensive,
+          reb: parseInt(player.rebounds_offensive)+parseInt(player.rebounds_defensive),
           assists: player.assists,
           fouls: player.fouls,
           steals: player.steals,
           turnovers: player.turnovers,
-          blocks: player.blocks,
+          blocks: player.blocks
         })
       })
+      res.render("boxscore", {
+        away: away,
+        home: home
+      })
     });
-    console.log(home)
-    res.render("boxscore", {
-      away: away,
-      home: home
-    })
+
 })
 
 router.get("*", (req, res) => {
