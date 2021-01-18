@@ -2,77 +2,192 @@
 <div class="margin">
 </div>
 
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Home
+        </button>
+      </h5>
+    </div>
 
-<div class="tables">
-  <div class="row">
-    <div class="col-lg-2">
-      <p>Name</p>
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <div class="tables">
+          <div class="row">
+            <div class="col-lg-2">
+              <p>Name</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Pos</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Mins</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Pts</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Ast</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Reb</p>
+            </div>
+            <div class="col-lg-1">
+              <p>F</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Stls</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Blk</p>
+            </div>
+            <div class="col-lg-1">
+              <p>TOs</p>
+            </div>
+          </div>
+        </div>
+        
+        <% home.forEach(player=>{%>
+        <div class="tables">
+          <div class="row">
+            <div class="col-lg-2">
+              <p><%=player.name%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.position%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.minutes%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.points%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.assists%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.reb%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.fouls%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.steals%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.blocks%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.turnovers%></p>
+            </div>
+          </div>
+        </div>
+        <%})%>
+      </div>
     </div>
-    <div class="col-lg-1">
-      <p>Pos</p>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Away
+        </button>
+      </h5>
     </div>
-    <div class="col-lg-1">
-      <p>Mins</p>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <div class="tables">
+          <div class="row">
+            <div class="col-lg-2">
+              <p>Name</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Pos</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Mins</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Pts</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Ast</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Reb</p>
+            </div>
+            <div class="col-lg-1">
+              <p>F</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Stls</p>
+            </div>
+            <div class="col-lg-1">
+              <p>Blk</p>
+            </div>
+            <div class="col-lg-1">
+              <p>TOs</p>
+            </div>
+          </div>
+        </div>
+        
+        <% away.forEach(player=>{%>
+        <div class="tables">
+          <div class="row">
+            <div class="col-lg-2">
+              <p><%=player.name%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.position%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.minutes%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.points%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.assists%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.reb%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.fouls%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.steals%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.blocks%></p>
+            </div>
+            <div class="col-lg-1">
+              <p><%=player.turnovers%></p>
+            </div>
+          </div>
+        </div>
+        <%})%>
+      </div>
     </div>
-    <div class="col-lg-1">
-      <p>Pts</p>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Game Info
+        </button>
+      </h5>
     </div>
-    <div class="col-lg-1">
-      <p>Ast</p>
-    </div>
-    <div class="col-lg-1">
-      <p>Reb</p>
-    </div>
-    <div class="col-lg-1">
-      <p>F</p>
-    </div>
-    <div class="col-lg-1">
-      <p>Stls</p>
-    </div>
-    <div class="col-lg-1">
-      <p>Blk</p>
-    </div>
-    <div class="col-lg-1">
-      <p>TOs</p>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
     </div>
   </div>
 </div>
 
-<% home.forEach(player=>{%>
-<div class="tables">
-  <div class="row">
-    <div class="col-lg-2">
-      <p><%=player.name%></p>
-    </div>
-    <div class="col-lg-1">
-      <p><%=player.position%></p>
-    </div>
-    <div class="col-lg-1">
-      <p><%=player.minutes%></p>
-    </div>
-    <div class="col-lg-1">
-      <p><%=player.points%></p>
-    </div>
-    <div class="col-lg-1">
-      <p><%=player.assists%></p>
-    </div>
-    <div class="col-lg-1">
-      <p><%=player.reb%></p>
-    </div>
-    <div class="col-lg-1">
-      <p><%=player.fouls%></p>
-    </div>
-    <div class="col-lg-1">
-      <p><%=player.steals%></p>
-    </div>
-    <div class="col-lg-1">
-      <p><%=player.blocks%></p>
-    </div>
-    <div class="col-lg-1">
-      <p><%=player.turnovers%></p>
-    </div>
-  </div>
-</div>
-<%})%>
+
 
 <%- include('footer'); -%>
