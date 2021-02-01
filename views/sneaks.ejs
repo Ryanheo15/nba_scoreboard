@@ -1,0 +1,25 @@
+<%- include('header'); -%>
+<h1>Sneakers</h1>
+</div>
+    <% shoes.forEach(shoe=>{%>
+    <!-- Create whatever game blocks using data from games -->
+    <div class="table">
+
+      <div class="row">
+        <div class="col-lg-3">
+            <img src=<%=shoe.media.imageUrl%> alt="" width = "200" >
+          <img src="" alt="">
+        </div>
+        <div class="col-lg-6">
+          <h1><%=shoe.shoe%></h1>
+          <h1><%=shoe.gender.toUpperCase()%></h1>
+        </div>
+        <div class="col-lg-3">
+          <h1><%=shoe.releaseDate%></h1>
+        </div>
+      </div>
+
+    </div>
+    <%})%>
+
+<%- include('footer'); -%>

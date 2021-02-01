@@ -37,23 +37,17 @@ const logos = new Map([
 ])
 
 router.get("/", (req, res) => {
-  res.redirect("/scores")
+  res.redirect("/index/scores")
 });
 
-router.get("/about", (req, res) => {
-  res.render("about")
-})
 
-router.get("/contact", (req, res) => {
-  res.render("contact")
-})
 
 //live scores, scores for today
 router.get("/scores", (req, res) => {
   //add live games
   var today = moment().tz('America/Los_Angeles');
   today = today.format("YYYYMMDD")
-  res.redirect(`/calendar/${today}`)
+  res.redirect(`/index/calendar/${today}`)
 });
 
 //for calendar feature, past games
@@ -76,9 +70,9 @@ router.get("/calendar/:date", (req, res) => {
         }
         games.push({
           date:date,
-          dateGameId: date + '/' + game.gameId,
-          yday: "/calendar/"+yesterday,
-          tomo: "/calendar/"+tomorrow,
+          dateGameId: '/index/'+date + '/' + game.gameId,
+          yday: "/index/calendar/"+yesterday,
+          tomo: "/index/calendar/"+tomorrow,
           Home: game.hTeam.triCode,
           HomeLogo: logos.get(game.hTeam.triCode),
           Away: game.vTeam.triCode,

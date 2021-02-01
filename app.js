@@ -8,6 +8,7 @@ require('dotenv').config()
 
 //Routes
 let indexRoute = require("./routes/index.js");
+let sneaksRoute = require("./routes/sneaks.js")
 
 // App set up
 let app = express();
@@ -16,9 +17,20 @@ app.set("view engine", "ejs")
 app.use(bodyParser.urlencoded({extended: true}));
 
 
+app.get("/", (req,res)=>{
+  res.redirect("about")
+})
+app.get("/about", (req, res) => {
+  res.render("about")
+})
+
+app.get("/contact", (req, res) => {
+  res.render("contact")
+})
 
 //Routes
-app.use(indexRoute);
+app.use('/index', indexRoute);
+app.use('/sneaks', sneaksRoute)
 
 //Listen
 let port = process.env.PORT || 3000
