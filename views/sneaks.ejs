@@ -1,25 +1,36 @@
 <%- include('header'); -%>
 <h1>Sneakers</h1>
+
+<div class="grid-container">
+  <div class="row">
+    <% for (var i = 0; i < shoes.length; i++) {%>
+      <%if(i%3 == 0 && i != 0){%>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <img src=<%=shoes[i].media.imageUrl%> alt="" width="200">
+            <h1><%=shoes[i].shoe%></h1>
+            <h1><%=shoes[i].gender.toUpperCase()%></h1>
+            <h1><%=shoes[i].releaseDate%></h1>
+            <div class="hide">
+                <h1><%=shoes[i].retailPrice%></h1>
+            </div>
+          </div>
+
+      <%}else{%>
+        <div class="col-sm">
+          <img src=<%=shoes[i].media.imageUrl%> alt="" width="200">
+          <h1><%=shoes[i].shoe%></h1>
+          <h1><%=shoes[i].gender.toUpperCase()%></h1>
+          <h1><%=shoes[i].releaseDate%></h1>
+          <div class="hide">
+              <h1><%=shoes[i].retailPrice%></h1>
+          </div>
+        </div>
+
+      <%}%>
+    <%}%>
+
 </div>
-    <% shoes.forEach(shoe=>{%>
-    <!-- Create whatever game blocks using data from games -->
-    <div class="table">
 
-      <div class="row">
-        <div class="col-lg-3">
-            <img src=<%=shoe.media.imageUrl%> alt="" width = "200" >
-          <img src="" alt="">
-        </div>
-        <div class="col-lg-6">
-          <h1><%=shoe.shoe%></h1>
-          <h1><%=shoe.gender.toUpperCase()%></h1>
-        </div>
-        <div class="col-lg-3">
-          <h1><%=shoe.releaseDate%></h1>
-        </div>
-      </div>
-
-    </div>
-    <%})%>
-
-<%- include('footer'); -%>
+  <%- include('footer'); -%>

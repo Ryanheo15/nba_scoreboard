@@ -1,5 +1,5 @@
 body{
-    background-color:#f4f4f4;
+    background-color:white;
     color:#555;
     font-family: Arial, Helvetica, sans-serif;
     font-size:16px;
@@ -26,9 +26,27 @@ table{
 
 .row{
     justify-content:center;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
+
+.col-sm{
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.col-sm:hover {
+  opacity: 30%;
+}
+
+.col-sm:hover > .hide{
+  display:block;
+}
+
+.hide{
+  display:none;
+}
+
 
 .container{
     width: 80%;
