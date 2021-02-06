@@ -8,23 +8,28 @@
         </div>
         <div class="row">
           <div class="col-sm">
-            <img src=<%=shoes[i].media.imageUrl%> alt="" width="200">
-            <h1><%=shoes[i].shoe%></h1>
-            <h1><%=shoes[i].gender.toUpperCase()%></h1>
-            <h1><%=shoes[i].releaseDate%></h1>
+            <div class="display">
+              <img src=<%=shoes[i].media.imageUrl%> alt="" width="200">
+              <h1><%=shoes[i].shoe%></h1>
+              <h1><%=shoes[i].gender.toUpperCase()%></h1>
+              <h1><%=shoes[i].releaseDate%></h1>
+            </div>
             <div class="hide">
-                <h1><%=shoes[i].retailPrice%></h1>
+                <div class="overlay-text">$<%=shoes[i].retailPrice%></div>
             </div>
           </div>
 
       <%}else{%>
         <div class="col-sm">
-          <img src=<%=shoes[i].media.imageUrl%> alt="" width="200">
-          <h1><%=shoes[i].shoe%></h1>
-          <h1><%=shoes[i].gender.toUpperCase()%></h1>
-          <h1><%=shoes[i].releaseDate%></h1>
+          <div class="display">
+            <img src=<%=shoes[i].media.imageUrl%> alt="" width="200">
+            <h1><%=shoes[i].shoe%></h1>
+            <h1><%=shoes[i].gender.toUpperCase()%></h1>
+            <h1><%=shoes[i].releaseDate%></h1>
+          </div>
           <div class="hide">
-              <h1><%=shoes[i].retailPrice%></h1>
+            <div class="overlay-text">$<%=shoes[i].retailPrice%></div>
+              <!--<h1><%=shoes[i].retailPrice%></h1>-->
           </div>
         </div>
 

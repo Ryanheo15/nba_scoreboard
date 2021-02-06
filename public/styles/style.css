@@ -35,18 +35,28 @@ table{
   padding-right: 1px;
 }
 
-.col-sm:hover {
+.display:hover {
   opacity: 30%;
 }
 
 .col-sm:hover > .hide{
+  opacity: 1;
   display:block;
 }
 
 .hide{
   display:none;
+  transform: translate(50%, -1000%);
 }
 
+.overlay-text{
+  all:initial;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+  text-align: center;
+}
 
 .container{
     width: 80%;
