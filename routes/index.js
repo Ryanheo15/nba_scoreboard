@@ -103,6 +103,46 @@ router.get("/:date/:id", (req, res) => {
         res.render("invalid")
       }
       else{
+
+        let hFirst = ""
+        let hSecond = ""
+        let hThird = ""
+        let hFourth = ""
+        let vFirst = ""
+        let vSecond = ""
+        let vThird = ""
+        let vFourth = ""
+        switch(data.sports_content.game.period_time.period_value){
+          case "1": 
+            hFirst = data.sports_content.game.home.linescores.period[0].score
+            vFirst = data.sports_content.game.visitor.linescores.period[0].score
+            break;
+          case "2":
+            hFirst = data.sports_content.game.home.linescores.period[0].score
+            vFirst = data.sports_content.game.visitor.linescores.period[0].score
+            hSecond = data.sports_content.game.home.linescores.period[1].score
+            vSecond = data.sports_content.game.visitor.linescores.period[1].score
+            break;
+          case "3":
+            hFirst = data.sports_content.game.home.linescores.period[0].score
+            vFirst = data.sports_content.game.visitor.linescores.period[0].score
+            hSecond = data.sports_content.game.home.linescores.period[1].score
+            vSecond = data.sports_content.game.visitor.linescores.period[1].score
+            hThird = data.sports_content.game.home.linescores.period[2].score
+            vThird = data.sports_content.game.visitor.linescores.period[2].score
+            break;
+          case "4": 
+            hFirst = data.sports_content.game.home.linescores.period[0].score
+            hSecond = data.sports_content.game.home.linescores.period[1].score
+            hThird = data.sports_content.game.home.linescores.period[2].score
+            hFourth = data.sports_content.game.home.linescores.period[3].score
+            vFirst = data.sports_content.game.visitor.linescores.period[0].score
+            vSecond = data.sports_content.game.visitor.linescores.period[1].score
+            vThird = data.sports_content.game.visitor.linescores.period[2].score
+            vFourth = data.sports_content.game.visitor.linescores.period[3].score
+            break;
+        }
+          
         gameInfo = {
           quarter: "Quarter " + data.sports_content.game.period_time.period_value,
           qStatus: data.sports_content.game.period_time.period_status,
@@ -111,10 +151,10 @@ router.get("/:date/:id", (req, res) => {
           home:{
             name: data.sports_content.game.home.abbreviation,
             score: data.sports_content.game.home.score,
-            first: data.sports_content.game.home.linescores.period[0].score,
-            second: data.sports_content.game.home.linescores.period[1].score,
-            third: data.sports_content.game.home.linescores.period[2].score,
-            fourth: data.sports_content.game.home.linescores.period[3].score,
+            first: hFirst,
+            second: hSecond,
+            third: hThird,
+            fourth: hFourth,
             Dreb:data.sports_content.game.home.stats.rebounds_defensive,
             Oreb: data.sports_content.game.home.stats.rebounds_offensive,
             stls: data.sports_content.game.home.stats.steals,
@@ -127,10 +167,10 @@ router.get("/:date/:id", (req, res) => {
           away :{
             name: data.sports_content.game.visitor.abbreviation,
             score: data.sports_content.game.visitor.score,
-            first: data.sports_content.game.visitor.linescores.period[0].score,
-            second: data.sports_content.game.visitor.linescores.period[1].score,
-            third: data.sports_content.game.visitor.linescores.period[2].score,
-            fourth: data.sports_content.game.visitor.linescores.period[3].score,
+            first: vFirst,
+            second: vSecond,
+            third: vThird,
+            fourth: vFourth,
             Dreb:data.sports_content.game.visitor.stats.rebounds_defensive,
             Oreb: data.sports_content.game.visitor.stats.rebounds_offensive,
             stls: data.sports_content.game.visitor.stats.steals,

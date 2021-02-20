@@ -72,6 +72,15 @@ table{
     text-align: center;
 }
 
+.aboutHead{
+  text-align: center;
+  background-color: #ecfafc;
+}
+
+.aboutHead li{
+  list-style-type: none;
+}
+
 #main-header{
     background-color: coral;
     color:#fff;
@@ -96,4 +105,11 @@ table{
     text-decoration: none;
     font-size: 18px;
     padding-right:15px;
+}
+
+#contactbtn{
+  border: 2px solid black;
+  position: absolute;
+  top: 65%;
+  left: 47%;
 }
